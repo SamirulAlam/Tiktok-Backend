@@ -1,7 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
 import Data from "./data.js";
-import Videos from "./dbModel.js"
+import Videos from "./dbModel.js";
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 
 
 //GKS3edjvhJf7jptW
@@ -21,7 +25,8 @@ app.use((req, res, next) => {
 })
 
 //dbconfig
-const connection__url="mongodb+srv://admin:GKS3edjvhJf7jptW@cluster0.tl45d.mongodb.net/<dbname>?retryWrites=true&w=majority"
+const password=process.env.PASSWORD;
+const connection__url=`mongodb+srv://admin:${password}@cluster0.tl45d.mongodb.net/<dbname>?retryWrites=true&w=majority`
 
 mongoose.connect(connection__url,{
     useNewUrlParser:true,
